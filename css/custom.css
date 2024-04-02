@@ -1,34 +1,35 @@
 /*Bootstrap Reset*/
 
-textarea { 
-    resize:none; 
+textarea {
+    resize: none;
 }
 
 li a {
     text-decoration: none !important;
     color: black;
-    
+
 }
 
 .card {
     max-width: 250px !important;
 }
 
-footer *{
+footer * {
     color: white;
     text-decoration: none !important;
 }
 
 .prezzo {
-        
-    border-radius: 25px;    
-    color: white; 
-}
+    border-radius: 5px;
+    color: white;
+    padding: 0px 15px;
+ }
 
 .prezzo span:first-child {
     font-size: x-large;
     font-weight: bold;
-  }
-  .prazzo span:last-child {
+}
+
+.prazzo span:last-child {
     font-size: smaller;
 }

@@ -47,13 +47,13 @@
     </header>
     <main>
         <section class="container mt-5">
-            <div class="row">
-                <div class="col-9">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-9">
                     <div>
                         <h2>Richiesta preventivo</h2>
                         <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo</p>
                     </div>
-                    <form class="row g-3">
+                    <form class="row g-3" id="submit">
                         <div class="col-12">
                             <label for="validationDefault01" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="validationDefault01"
@@ -71,11 +71,11 @@
                         </div>
                         <div class="col-12">
                             <label for="validationDefault04" class="form-label">Tipo di lavoro</label>
-                            <select class="form-select" id="validationDefault04" required>
-                                <option selected disabled value="">Seleziona il tipo di lavoro</option>
-                                <option>Sviluppo backend</option>
-                                <option>Sviluppo frontend</option>
-                                <option>Analisi progettuale</option>
+                            <select class="form-select" id="WorkType" id="validationDefault04" required>
+                                <option>Seleziona il tipo di lavoro</option>
+                                <option value="SBackend">Sviluppo backend</option>
+                                <option value="SFrontend">Sviluppo frontend</option>
+                                <option value="AnalisiP">Analisi progettuale</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -92,17 +92,20 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
                                 <label class="form-check-label" for="invalidCheck2">
-                                    <a href="https://boolean.careers/privacy-policy?_gl=1*f2vl09*_up*MQ..*_ga*MTc2OTA2NDQyMi4xNzExNzMxODQ5*_ga_Z7YQ75GL74*MTcxMTczMTg0OC4xLjAuMTcxMTczMTg0OC4wLjAuMA..&gclid=Cj0KCQjwzZmwBhD8ARIsAH4v1gVmuSPAnb9Gn23NJtAL2rcUhX9N7jb0HwdrEkuhjiheFlBLhDzFthEaAh8LEALw_wcB" class="link-dark">Accettare termini e condizioni</a>
+                                    <a href="https://boolean.careers/privacy-policy?_gl=1*f2vl09*_up*MQ..*_ga*MTc2OTA2NDQyMi4xNzExNzMxODQ5*_ga_Z7YQ75GL74*MTcxMTczMTg0OC4xLjAuMTcxMTczMTg0OC4wLjAuMA..&gclid=Cj0KCQjwzZmwBhD8ARIsAH4v1gVmuSPAnb9Gn23NJtAL2rcUhX9N7jb0HwdrEkuhjiheFlBLhDzFthEaAh8LEALw_wcB"
+                                        class="link-dark">Accettare termini e condizioni</a>
                                 </label>
                             </div>
                         </div>
 
                         <div class="col-lg-6 d-flex justify-content-center">
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-primary" type="submit">Invia il form</button>
                         </div>
 
-                        <div class="bg-primary prezzo col-lg-6 d-flex justify-content-center align-items-baseline">
-                            <span>200</span><span>,00</span>
+                        <div class="col-lg-6 d-flex justify-content-center align-items-baseline">
+                            <div class="bg-primary prezzo" disabled>
+                                <span id="prezzoTotale">200</span><span>,00</span>
+                            </div>
                         </div>
 
                     </form>
@@ -133,7 +136,9 @@
             <div class="row">
                 <div class="col">
                     <span class="py-3 d-flex justify-content-center d-flex align-items-center">
-                        <a href="https://boolean.careers/?utm_source=google&utm_campaign=it_search_brand&utm_medium=cpc&utm_content=boolean&utm_term=boolean&gad_source=1&gclid=Cj0KCQjwzZmwBhD8ARIsAH4v1gVmuSPAnb9Gn23NJtAL2rcUhX9N7jb0HwdrEkuhjiheFlBLhDzFthEaAh8LEALw_wcB">Boolean SRL Viale Cassala 22, 20143, Milano P.IVA: 10214930967</a>
+                        <a
+                            href="https://boolean.careers/?utm_source=google&utm_campaign=it_search_brand&utm_medium=cpc&utm_content=boolean&utm_term=boolean&gad_source=1&gclid=Cj0KCQjwzZmwBhD8ARIsAH4v1gVmuSPAnb9Gn23NJtAL2rcUhX9N7jb0HwdrEkuhjiheFlBLhDzFthEaAh8LEALw_wcB">Boolean
+                            SRL Viale Cassala 22, 20143, Milano P.IVA: 10214930967</a>
                     </span>
                 </div>
             </div>
@@ -142,6 +147,7 @@
 
     <!-- js -->
     <script src="js/Bootstrap/js/bootstrap.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
