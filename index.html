@@ -22,7 +22,7 @@
 <body>
     <header>
         <nav class="navbar bg-dark navbar-expand-xxl bg-body-tertiary" data-bs-theme="dark">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="#">BoolFactory</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -35,10 +35,10 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#">Servizi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="#">Contatti</a>
                         </li>
                     </ul>
                 </div>
@@ -46,92 +46,103 @@
         </nav>
     </header>
     <main>
-        <section class="container mt-5">
-            <div class="row d-flex justify-content-center">
+        <div class="container mt-5">
+            <div class="row">
                 <div class="col-lg-9">
-                    <div>
-                        <h2>Richiesta preventivo</h2>
-                        <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo</p>
+                    <section>
+
+                        <h2 class="d-flex justify-content-center">Richiesta preventivo</h2>
+                        <p class="d-flex justify-content-center">Compila il form per richiedere un preventivo per i
+                            nostri servizi di sviluppo</p>
+
+                        <form class="row g-3 d-flex justify-content-center" id="submit">
+                            <div class="col-12">
+                                <label for="validationDefault01" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="validationDefault01"
+                                    placeholder="Inserire il nome" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="validationDefault02" class="form-label">Cognome</label>
+                                <input type="text" class="form-control" id="validationDefault02"
+                                    placeholder="Inserire il cognome" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="floatingInputValue">Indirizzo Email</label>
+                                <input type="email" class="form-control" id="floatingInputValue"
+                                    placeholder="Inserire l'indirizzo email">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="validationDefault04" class="form-label">Tipo di lavoro</label>
+                                <select class="form-select" id="WorkType" id="validationDefault04" required>
+                                    <option value="">Seleziona il tipo di lavoro</option>
+                                    <option value="SBackend">Sviluppo backend</option>
+                                    <option value="SFrontend">Sviluppo frontend</option>
+                                    <option value="AnalisiP">Analisi progettuale</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="validationDefault05" class="form-label">Codice sconto</label>
+                                <input type="text" class="form-control" id="sconto" id="validationDefault05"
+                                    placeholder="Inseire il codice promozionale">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Note</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                    placeholder="Aggiungere eventuali note" rows="6"></textarea>
+                            </div>
+
+                            <div class="col-xxl-12 d-flex justify-content-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2"
+                                        required>
+                                    <label class="form-check-label" for="invalidCheck2">
+                                        <a href="https://boolean.careers/privacy-policy?_gl=1*f2vl09*_up*MQ..*_ga*MTc2OTA2NDQyMi4xNzExNzMxODQ5*_ga_Z7YQ75GL74*MTcxMTczMTg0OC4xLjAuMTcxMTczMTg0OC4wLjAuMA..&gclid=Cj0KCQjwzZmwBhD8ARIsAH4v1gVmuSPAnb9Gn23NJtAL2rcUhX9N7jb0HwdrEkuhjiheFlBLhDzFthEaAh8LEALw_wcB"
+                                            class="link-dark">Accettare termini e condizioni</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 d-flex justify-content-center">
+                                <button class="btn btn-primary" type="submit">Calcola il preventivo</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <section class="card  p-3">
+                                <p class="fw-bold">Il prezzo totale è di:</p>
+                                <div class="d-flex justify-content-center align-items-baseline">
+                                    <div class="prezzo">
+                                        <span id="prezzoIntero"></span><span id="prezzoDecimale"></span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
                     </div>
-                    <form class="row g-3" id="submit">
-                        <div class="col-12">
-                            <label for="validationDefault01" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="validationDefault01"
-                                placeholder="Inserire il nome" required>
-                        </div>
-                        <div class="col-12">
-                            <label for="validationDefault02" class="form-label">Cognome</label>
-                            <input type="text" class="form-control" id="validationDefault02"
-                                placeholder="Inserire il cognome" required>
-                        </div>
-                        <div class="col-12">
-                            <label for="floatingInputValue">Indirizzo Email</label>
-                            <input type="email" class="form-control" id="floatingInputValue"
-                                placeholder="Inserire l'indirizzo email">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="validationDefault04" class="form-label">Tipo di lavoro</label>
-                            <select class="form-select" id="WorkType" id="validationDefault04" required>
-                                <option value="">Seleziona il tipo di lavoro</option>
-                                <option value="SBackend">Sviluppo backend</option>
-                                <option value="SFrontend">Sviluppo frontend</option>
-                                <option value="AnalisiP">Analisi progettuale</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="validationDefault05" class="form-label">Codice sconto</label>
-                            <input type="text" class="form-control" id="sconto" id="validationDefault05"
-                                placeholder="Inseire il codice promozionale">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Note</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                placeholder="Aggiungere eventuali note" rows="6"></textarea>
-                        </div>
-                        
-                        <div class="col-xxl-12 d-flex justify-content-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                                <label class="form-check-label" for="invalidCheck2">
-                                    <a href="https://boolean.careers/privacy-policy?_gl=1*f2vl09*_up*MQ..*_ga*MTc2OTA2NDQyMi4xNzExNzMxODQ5*_ga_Z7YQ75GL74*MTcxMTczMTg0OC4xLjAuMTcxMTczMTg0OC4wLjAuMA..&gclid=Cj0KCQjwzZmwBhD8ARIsAH4v1gVmuSPAnb9Gn23NJtAL2rcUhX9N7jb0HwdrEkuhjiheFlBLhDzFthEaAh8LEALw_wcB"
-                                        class="link-dark">Accettare termini e condizioni</a>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 d-flex justify-content-center">
-                            <button class="btn btn-primary" type="submit">Invia il form</button>
-                        </div>
-
-                        <div class="col-lg-6 d-flex justify-content-center align-items-baseline">
-                            <div class="bg-primary prezzo" disabled>
-                                <span id="prezzoIntero"></span><span id="prezzoDecimale"></span>
-                            </div>
-                        </div>
-
-                    </form>
 
                 </div>
                 <div class="col-lg-3">
-                    <div class="card mt-5">
-                        <img src="/img/Support.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Assistenza tecnica</h5>
-                            <p class="card-text">Se hai bisogno di aiuto puoi contattarci ai seguenti riferimenti</p>
+                    <section class="d-flex justify-content-center">
+                        <div class="card mt-5">
+                            <img src="./img/Support.jpeg" class="card-img-top" alt="Supporto tecnico BoolFactory">
+                            <div class="card-body">
+                                <h5 class="card-title">Assistenza tecnica</h5>
+                                <p class="card-text">Se hai bisogno di aiuto puoi contattarci ai seguenti riferimenti
+                                </p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a href="tel:+390230558515">+39 02 3055 8515</a></li>
+                                <li class="list-group-item"><a href="mailto:support@boolean.careers"
+                                        target="_blank">support@boolean.careers</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="tel:+390230558515">+39 02 3055 8515</a></li>
-                            <li class="list-group-item"><a
-                                    href="mailto: support@boolean.careers">support@boolean.careers</a></li>
-                            </li>
-                        </ul>
-
-                    </div>
+                    </section>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
-
     <footer class="bg-dark mt-5">
         <div class="container-fluid">
             <div class="row">

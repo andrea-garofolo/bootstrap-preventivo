@@ -36,6 +36,8 @@ const WorkHour = 10.00
 const scontoValue = 0.25
 
 
+
+
 buttonElement.addEventListener("submit", function (event) {
     event.preventDefault()
 
@@ -69,7 +71,7 @@ buttonElement.addEventListener("submit", function (event) {
 
 
 
-//fUNZIONI
+//FUNZIONI
 
 function calcoloCostoStandard(text) {
 
@@ -91,8 +93,6 @@ function calcoloCostoStandard(text) {
 
 
 function verificoCodiceSconto(text) {
-
-    //DEFINISCO I CODICI SCONTO
 
     //Codici sconto del 25%"
     let listSconto = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"]
@@ -120,3 +120,4 @@ function decimalNum(num) {
 
     return decimal
 }
+
