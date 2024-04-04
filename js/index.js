@@ -7,54 +7,116 @@ const buttonElement = document.getElementById("submit")
 
 const workElement = document.getElementById("WorkType")
 
-const priceELement = document.getElementById("prezzoTotale")
+const priceIntELement = document.getElementById("prezzoIntero")
+
+const priceDecimalELement = document.getElementById("prezzoDecimale")
+
+const scontoElement = document.getElementById("sconto")
 
 
 //DEFINISCO I COSTI
 
 //sviluppo backend
-const backend = 20.50
+const backend = 20.50  // €/h
 
 //sviluppo frontend
-const frontend = 15.30
+const frontend = 15.30 // €/h
 
 //analisi progettuale
-const analisi = 33.60
+const analisi = 33.60 // €/h
 
-//costo orario
-const costByHour = 10.00
+//DEFINISCO LE ORE DI LAVORO
 
-//console.log(backend,frontend,analisi,costByHour)
+//Ore di lavoro
+const WorkHour = 10.00
 
+//DEFINISCO I VALORI DEGLI SCONTI
+
+//Sconto del 25%
+const scontoValue = 0.25
 
 
 buttonElement.addEventListener("submit", function (event) {
-    //console.log('click sul button')
     event.preventDefault()
 
-    const work = workElement.value
 
-    
-   
-    //console.log (total)
 
-    //calcolo sconti
-    if (work === "SBackend") {
-        backend * costByHour
-        console.log(backend * costByHour)
-        priceELement.innerHTML = backend * costByHour
+    const typeOfWork = workElement.value
+    const priceStandard = calcoloCostoStandard(typeOfWork)
+
+    const insertSconto = scontoElement.value
+    const codSconto = verificoCodiceSconto(insertSconto)
+
+
+    let finalPrice = 0
+
+    if (codSconto === true) {
+        console.log("hai lo sconto")
+        finalPrice = priceStandard - priceStandard * scontoValue
+
+    } else {
+        finalPrice = priceStandard
+
     }
-    else if (work === "SFrontend") {
-        frontend * costByHour
-        console.log(frontend * costByHour)
-        priceELement.innerHTML = frontend * costByHour
-    }
-    else if (work === "AnalisiP") {
-        analisi * costByHour
-        console.log(analisi * costByHour)
-        priceELement.innerHTML = analisi * costByHour
-    }
-    else {
-        priceELement.innerHTML = "n/a"
-    }    
+    priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
+    priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
+
 })
+
+
+
+
+
+
+
+//fUNZIONI
+
+function calcoloCostoStandard(text) {
+
+    let standardCost = 0
+
+    if (text === "SBackend") {
+        standardCost = backend * WorkHour
+    }
+    else if (text === "SFrontend") {
+        standardCost = frontend * WorkHour
+    }
+    else if (text === "AnalisiP") {
+        standardCost = analisi * WorkHour
+
+    }
+    return standardCost
+}
+
+
+
+function verificoCodiceSconto(text) {
+
+    //DEFINISCO I CODICI SCONTO
+
+    //Codici sconto del 25%"
+    let listSconto = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"]
+
+    let scontoTrovato = false // booean
+
+    for (let i = 0; i < listSconto.length; i++) {
+        const currentSconto = listSconto[i]
+        if (currentSconto === text) {
+            scontoTrovato = true
+        }
+
+    }
+
+    return scontoTrovato
+}
+
+
+function decimalNum(num) {
+    let decimal = "00"
+
+    if (((num - Math.floor(num)) * 100) !== 0) {
+        decimal = ((num - Math.floor(num)) * 100)
+    }
+
+    return decimal
+}
