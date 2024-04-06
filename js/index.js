@@ -1,6 +1,8 @@
 //console.log("Modulo-preventivi") //Test connessione
 
 
+
+
 //RECUPERO GLI ID
 
 const buttonElement = document.getElementById("submit")
@@ -33,37 +35,80 @@ const WorkHour = 10.00
 //DEFINISCO I VALORI DEGLI SCONTI
 
 //Sconto del 25%
-const scontoValue = 0.25
+const scontoValue = 0.25;  //CHIEDERE A GIAN IL PERCHè
 
 
 
 
-buttonElement.addEventListener("submit", function (event) {
-    event.preventDefault()
+(() => {
+    'use strict'
+
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            
+
+            const typeOfWork = workElement.value
+            const priceStandard = calcoloCostoStandard(typeOfWork)
+
+            const insertSconto = scontoElement.value
+            const codSconto = verificoCodiceSconto(insertSconto)
+
+
+            let finalPrice = 0
+
+            if (codSconto === true) {
+                console.log("hai lo sconto")
+                finalPrice = priceStandard - priceStandard * scontoValue
+
+            } else {
+                finalPrice = priceStandard
+
+            }
+            priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
+            priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
+
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+
+
+// buttonElement.addEventListener("submit", function (event) {
+//     event.preventDefault()
 
 
 
-    const typeOfWork = workElement.value
-    const priceStandard = calcoloCostoStandard(typeOfWork)
+//     const typeOfWork = workElement.value
+//     const priceStandard = calcoloCostoStandard(typeOfWork)
 
-    const insertSconto = scontoElement.value
-    const codSconto = verificoCodiceSconto(insertSconto)
+//     const insertSconto = scontoElement.value
+//     const codSconto = verificoCodiceSconto(insertSconto)
 
 
-    let finalPrice = 0
+//     let finalPrice = 0
 
-    if (codSconto === true) {
-        console.log("hai lo sconto")
-        finalPrice = priceStandard - priceStandard * scontoValue
+//     if (codSconto === true) {
+//         console.log("hai lo sconto")
+//         finalPrice = priceStandard - priceStandard * scontoValue
 
-    } else {
-        finalPrice = priceStandard
+//     } else {
+//         finalPrice = priceStandard
 
-    }
-    priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
-    priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
+//     }
+//     priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
+//     priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
 
-})
+// })
 
 
 

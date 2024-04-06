@@ -20,6 +20,13 @@ footer {
     border: 1px solid
 }
 
+
+.notValidate {
+    border-color: #DDDDDD !important;
+    background-image: inherit !important;
+    box-shadow: inherit !important;
+}
+
 /*Custom*/
 
 .card {
@@ -44,3 +51,5 @@ footer * {
 .prazzo span:last-child {
     font-size: smaller;
 }
+
+
