@@ -35,83 +35,55 @@ const WorkHour = 10.00
 //DEFINISCO I VALORI DEGLI SCONTI
 
 //Sconto del 25%
-const scontoValue = 0.25;  //CHIEDERE A GIAN IL PERCHè
+const scontoValue = 0.25
 
 
 
 
-(() => {
-    'use strict'
 
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-            
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+const forms = document.querySelectorAll('.needs-validation')
+
+// Loop over them and prevent submission
+Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+
+        } else if (form.checkValidity()) {
+            event.preventDefault()
 
             const typeOfWork = workElement.value
             const priceStandard = calcoloCostoStandard(typeOfWork)
-
+    
             const insertSconto = scontoElement.value
             const codSconto = verificoCodiceSconto(insertSconto)
-
-
+    
+    
             let finalPrice = 0
-
+    
             if (codSconto === true) {
-                console.log("hai lo sconto")
+                //console.log("hai lo sconto")
                 finalPrice = priceStandard - priceStandard * scontoValue
-
+    
             } else {
                 finalPrice = priceStandard
-
+    
             }
             priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
             priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
-
-
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
-
-
-// buttonElement.addEventListener("submit", function (event) {
-//     event.preventDefault()
+        }
 
 
 
-//     const typeOfWork = workElement.value
-//     const priceStandard = calcoloCostoStandard(typeOfWork)
-
-//     const insertSconto = scontoElement.value
-//     const codSconto = verificoCodiceSconto(insertSconto)
 
 
-//     let finalPrice = 0
-
-//     if (codSconto === true) {
-//         console.log("hai lo sconto")
-//         finalPrice = priceStandard - priceStandard * scontoValue
-
-//     } else {
-//         finalPrice = priceStandard
-
-//     }
-//     priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
-//     priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
-
-// })
-
-
-
+        form.classList.add('was-validated')
+    }, false)
+})
 
 
 
