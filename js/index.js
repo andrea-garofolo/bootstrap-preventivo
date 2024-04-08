@@ -1,8 +1,5 @@
 //console.log("Modulo-preventivi") //Test connessione
 
-
-
-
 //RECUPERO GLI ID
 
 const buttonElement = document.getElementById("submit")
@@ -15,6 +12,7 @@ const priceDecimalELement = document.getElementById("prezzoDecimale")
 
 const scontoElement = document.getElementById("sconto")
 
+const CodErrorElement = document.getElementById("CodError")
 
 //DEFINISCO I COSTI
 
@@ -36,10 +34,6 @@ const WorkHour = 10.00
 
 //Sconto del 25%
 const scontoValue = 0.25
-
-
-
-
 
 
 
@@ -73,11 +67,20 @@ Array.from(forms).forEach(form => {
                     //console.log("hai lo sconto")
                     finalPrice = priceStandard - priceStandard * scontoValue
                     //console.log("sconto")
+                    CodErrorElement.innerHTML = `
+                    <span class="valid-Code">
+                    Il codice sconto è valido
+                    </span>
+                    `
 
                 } else {
                     finalPrice = priceStandard
                     //console.log("errore sconto")
-                    alert("il codice sconto inserito non è vallido")
+                    CodErrorElement.innerHTML = `
+                    <span class="invalid-Code">
+                    Il codice sconto inserito non è valido
+                    </span>
+                    `
                 }
             }
 
