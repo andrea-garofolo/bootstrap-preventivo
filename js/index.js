@@ -58,21 +58,29 @@ Array.from(forms).forEach(form => {
 
             const typeOfWork = workElement.value
             const priceStandard = calcoloCostoStandard(typeOfWork)
-    
+
             const insertSconto = scontoElement.value
-            const codSconto = verificoCodiceSconto(insertSconto)
-    
-    
+
             let finalPrice = 0
-    
-            if (codSconto === true) {
-                //console.log("hai lo sconto")
-                finalPrice = priceStandard - priceStandard * scontoValue
-    
-            } else {
+
+            if (insertSconto === "") {
                 finalPrice = priceStandard
-    
+                //console.log("no sconto")
+            } else {
+
+                const codSconto = verificoCodiceSconto(insertSconto)
+                if (codSconto === true) {
+                    //console.log("hai lo sconto")
+                    finalPrice = priceStandard - priceStandard * scontoValue
+                    //console.log("sconto")
+
+                } else {
+                    finalPrice = priceStandard
+                    //console.log("errore sconto")
+                    alert("il codice sconto inserito non è vallido")
+                }
             }
+
             priceIntELement.innerHTML = '&euro; ' + Math.floor(finalPrice)
             priceDecimalELement.innerHTML = "," + decimalNum(finalPrice)
         }
